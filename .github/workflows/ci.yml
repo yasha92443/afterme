@@ -17,7 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        # Keep the Linux image compatible with the locked Playwright browser build.
+        os: [ubuntu-24.04, windows-latest, macos-latest]
         node: ['22', '24']
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
@@ -39,11 +40,11 @@ jobs:
       - name: Check committed browser assets
         run: git diff --exit-code -- assets/browser
       - run: npx playwright install --with-deps chromium
-        if: matrix.os == 'ubuntu-latest' && matrix.node == '24'
+        if: matrix.os == 'ubuntu-24.04' && matrix.node == '24'
       - run: npm run test:browser
-        if: matrix.os == 'ubuntu-latest' && matrix.node == '24'
+        if: matrix.os == 'ubuntu-24.04' && matrix.node == '24'
       - name: Browser checks through Durable Objects
-        if: matrix.os == 'ubuntu-latest' && matrix.node == '24'
+        if: matrix.os == 'ubuntu-24.04' && matrix.node == '24'
         env:
           AFTERME_TEST_RUNTIME: durable-object
         run: npm run test:browser
@@ -51,7 +52,7 @@ jobs:
 
   candidate:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

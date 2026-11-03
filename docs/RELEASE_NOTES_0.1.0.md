@@ -1,7 +1,7 @@
 # AfterMe 0.1.0 source release
 
 Updated for schema 24 on 2026-11-03. The first public source uses the reviewed
-November 1 copy candidate, with documentation updates for publication. The UI
+November 1 copy candidate, with publication documentation and Ubuntu 24.04 CI runner updates. The UI
 redesign continues as a later iteration. Production deployment, capacity and
 account security follow the deployment acceptance steps.
 
@@ -72,7 +72,7 @@ The repository contains synthetic SQLite/security/concurrency/recovery tests,
 compiled-browser checks, Playwright scenarios and an isolated complete release
 rehearsal. Current results and remaining external work are recorded in
 [OPEN_SOURCE_READINESS](OPEN_SOURCE_READINESS.md). Associate every count and timing with its checked source and date. The November 3
-publication changes documentation only; implementation, dependencies and tests
+publication changes documentation and the CI runner image; implementation, dependencies and tests
 match the November 1 final copy candidate.
 
 Prepared-browser-PDF delivery and bounded Cron integration have local regression
