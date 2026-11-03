@@ -1,0 +1,12 @@
+{
+  "family": "AfterMe PDF Song SC",
+  "upstream": "Noto Serif SC",
+  "weight": 400,
+  "license": "OFL-1.1",
+  "source_url": "https://github.com/google/fonts/tree/main/ofl/notoserifsc",
+  "source_sha256": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
+  "asset": "assets/fonts/afterme-song-sc.ttf",
+  "sha256": "ed8d733477a40ad267df7bf0b45846b6aa05c881f4ce8e859538ffe2798a083c",
+  "bytes": 14339360,
+  "characters": 30486
+}

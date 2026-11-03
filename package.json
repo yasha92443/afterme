@@ -1,0 +1,46 @@
+{
+  "name": "afterme-vault",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal Cloudflare Worker check-in, absence alerts, and private/public message delivery.",
+  "scripts": {
+    "setup:guided": "node scripts/setup-guided.mjs",
+    "test": "node scripts/test.mjs",
+    "backup:verify": "node scripts/verify-backup.mjs",
+    "backup:from-d1": "node scripts/export-backup-local.mjs",
+    "dev": "npm run build:browser && wrangler dev",
+    "deploy": "npm run build:browser && wrangler deploy",
+    "d1:migrate:local": "wrangler d1 migrations apply DB --local",
+    "d1:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "gmail:oauth": "node scripts/gmail-oauth.mjs",
+    "rehearsal:mail": "node scripts/rehearse-mail.mjs send",
+    "rehearsal:verify-reply": "node scripts/rehearse-mail.mjs verify-reply",
+    "rehearsal:release-flow": "node scripts/rehearse-release-flow.mjs",
+    "monitor:setup": "node scripts/setup-uptimerobot-monitor.mjs",
+    "build:browser": "node scripts/build-browser.mjs",
+    "build": "npm run build:browser && wrangler deploy --dry-run --config wrangler.example.toml --outdir output/build",
+    "build:durable": "npm run build:browser && wrangler deploy --dry-run --config wrangler.durable-object.example.toml --outdir output/build-durable",
+    "test:browser": "playwright test",
+    "check:browser-build": "node scripts/check-browser-build.mjs",
+    "check:browser-build:durable": "node scripts/check-browser-build.mjs output/build-durable/durable-worker.js",
+    "release:check": "node scripts/release-audit.mjs",
+    "release:prepare": "node scripts/prepare-release.mjs",
+    "licenses:generate": "node scripts/dependency-licenses.mjs",
+    "backup:encrypt": "node scripts/encrypt-backup.mjs",
+    "pdf:local": "node scripts/render-pdf-local.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "esbuild": "0.28.1",
+    "wrangler": "4.153.0"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "yasha92443",
+    "url": "https://github.com/yasha92443"
+  }
+}

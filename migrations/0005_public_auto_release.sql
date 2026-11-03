@@ -1,0 +1,1 @@
+ALTER TABLE public_farewell ADD COLUMN auto_released_at TEXT;

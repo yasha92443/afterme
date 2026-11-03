@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest a change to the self-hosted application.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What need does this address?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior and effect on existing users
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and tradeoffs

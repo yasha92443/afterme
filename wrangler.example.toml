@@ -1,0 +1,62 @@
+name = "afterme"
+main = "src/worker.js"
+compatibility_date = "2026-07-09"
+compatibility_flags = ["nodejs_compat"]
+# The dashboard serializes browser functions; esbuild name helpers cannot run there.
+keep_names = false
+workers_dev = true
+
+[assets]
+directory = "./assets"
+binding = "PDF_FONTS"
+run_worker_first = true
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "afterme"
+database_id = "00000000-0000-4000-8000-000000000000" # Placeholder; replace with your own D1 ID
+
+[vars]
+APP_NAME = "AfterMe"
+PDF_GENERATION_MODE = "browser"
+# After schema 24 and isolated CPU acceptance, staged background execution uses:
+# BACKGROUND_EXECUTION_MODE = "staged"
+# BACKGROUND_LANE_SCHEDULING = "true"
+# PDF_MAX_BYTES = "<largest PDF size verified for this deployment>"
+# For independent lanes set [triggers].crons to:
+# ["* * * * *", "*/2 * * * *", "1-59/2 * * * *"]
+# A single ["* * * * *"] schedule retains the earlier staged compatibility mode.
+BASE_URL = "https://afterme.your-subdomain.workers.dev"
+MAIL_PROVIDER = "dry-run"
+FROM_EMAIL = "afterme@example.invalid"
+MAX_DAILY_EMAILS = "20"
+RELEASE_SUSPENDED = "true"
+MAIL_HEALTHCHECK_ENABLED = "false"
+MAIL_HEALTHCHECK_EMAIL = "you@example.com"
+INBOUND_PROVIDER = "web"
+MAIL_INBOUND_ENABLED = "false"
+CONTACT_NOTIFICATIONS_ENABLED = "true"
+
+[[ratelimits]]
+name = "LOGIN_LIMITER"
+namespace_id = "18001"
+simple = { limit = 10, period = 60 }
+[[ratelimits]]
+name = "VERIFY_LIMITER"
+namespace_id = "18002"
+simple = { limit = 30, period = 60 }
+[[ratelimits]]
+name = "API_LIMITER"
+namespace_id = "19004"
+simple = { limit = 120, period = 60 }
+[[ratelimits]]
+name = "READ_LIMITER"
+namespace_id = "19005"
+simple = { limit = 60, period = 60 }
+[[ratelimits]]
+name = "EXPENSIVE_LIMITER"
+namespace_id = "18003"
+simple = { limit = 30, period = 60 }

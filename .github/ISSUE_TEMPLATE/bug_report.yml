@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible problem using synthetic data.
+body:
+  - type: markdown
+    attributes:
+      value: "For security issues, follow SECURITY.md and request a private channel. Never include keys, tokens, real letters, personal emails, database IDs or production screenshots."
+  - type: input
+    id: version
+    attributes:
+      label: Source version and runtime
+      placeholder: Source tag, Node version, browser and OS
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps using synthetic data
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted diagnostic information
+      description: Remove personal data and secrets before posting.
